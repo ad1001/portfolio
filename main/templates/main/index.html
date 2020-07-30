@@ -1,0 +1,68 @@
+{% extends 'main/base.html'%}
+<!-- {% load static %} -->
+{% block content %}
+
+    <section id="welcome-section">
+        <div class="content">
+            <h1>Aditya Tripathy</h1>
+            <p>python | django | html | css </p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <br>
+        <br>
+        <br>
+        <ul>
+            {% for project  in projects %} 
+            <li>
+                <br>
+                <div class="card">
+                    <div class="symbol">
+
+                       <img src="{% static 'media/view_list-24px.svg' %}" id='icon'> 
+                    </div>
+                  <div class="card-content">
+                        <h2>{{project.name}}</h2>                      
+                        <p>{{project.content}}</p>
+                    </div>
+                    <div class="git"> <a href='{{project.git}}' target='_blank'>Git</a>
+                    </div>
+                </div> 
+                <br>
+            </li>
+            {% endfor %}
+        </ul>
+               
+    </section>
+    <section id="contacts">
+        <div class="form-card"> 
+        <h2 style="padding: 0; margin: 0;">Drop me a message?</h2>  
+        <hr>
+        <form action=""  method = 'POST'>
+            {% csrf_token %}
+        <br>
+        <label for="Name">Name:</label>
+        <br>
+        <input type="text" id = 'Name' placeholder="Full Name" name='name' ">
+        <br>
+        <br>
+        <label for="Email">Email Id:</label>
+        <br>
+        <input type="email" name="email" id="Email" placeholder="Email Id">
+        <br>
+        
+        <br>
+        <textarea name="comments"id="" cols="30" rows="10" placeholder="Any Comments?"></textarea>
+        <br>
+        <button type="submit">Save Message</button>
+        </form>
+        </div>
+        
+    </section>
+    <footer>
+        <a target='blank' href="https://github.com/ad1001">Github </a>
+        <a target='blank' href="https://www.linkedin.com/in/aditya-tripathy-bb7b72179/">LinkedIn</a>
+    </footer>
+
+{% endblock %}
